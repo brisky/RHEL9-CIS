@@ -5,6 +5,7 @@ include MANIFEST.in
 include *.md *.rst
 include ansible.cfg
 include .ansible-lint .gitattributes .gitignore .yamllint .pre-commit-config.yaml LICENSE
+include requirements.txt Makefile
 recursive-exclude .git *
 recursive-include .github *.yml *.md *.tf *.tfvars
 recursive-include collections *.yml
