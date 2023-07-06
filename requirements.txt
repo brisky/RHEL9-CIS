@@ -3,3 +3,5 @@ lxml
 xmltodict
 jmespath
 yamllint
+pre-commit
+ansible-sign
