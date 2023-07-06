@@ -1,6 +1,13 @@
 # Changes to rhel9CIS
 
+## 1.1.0
+
+- Added ansible-sign
+- Added pre-commit
+- 5.6.5 updated to fix optional changes
+
 ## 1.0.9
+
 fixed assert for user password set
 
 thanks to @byjunks
