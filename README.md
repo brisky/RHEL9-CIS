@@ -18,7 +18,7 @@
 ![Devel Build Status](https://img.shields.io/github/actions/workflow/status/ansible-lockdown/RHEL9-CIS/linux_benchmark_testing.yml?label=Devel%20Build%20Status)
 ![Devel Commits](https://img.shields.io/github/commit-activity/m/ansible-lockdown/RHEL9-CIS/devel?color=dark%20green&label=Devel%20Branch%20commits)
 
-![Release Branch](https://img.shields.io/badge/Release%20Branch-Main-brightgreen) 
+![Release Branch](https://img.shields.io/badge/Release%20Branch-Main-brightgreen)
 ![Main Build Status](https://img.shields.io/github/actions/workflow/status/ansible-lockdown/RHEL9-CIS/linux_benchmark_testing.yml?label=Build%20Status)
 ![Main Release Date](https://img.shields.io/github/release-date/ansible-lockdown/RHEL9-CIS?label=Release%20Date)
 ![Release Tag](https://img.shields.io/github/v/tag/ansible-lockdown/RHEL9-CIS?label=Release%20Tag&&color=success)
@@ -158,10 +158,48 @@ Below is an example of the tag section from a control within this role. Using th
 
 We encourage you (the community) to contribute to this role. Please read the rules below.
 
-- Your work is done in your own individual branch. Make sure to Signed-off and GPG sign all commits you intend to merge.
+- Your work is done in your own individual branch.
+  - Make sure to Signed-off and GPG sign all commits you intend to merge.
+  - We utilise ansible-sign and pre-commit
 - All community Pull Requests are pulled into the devel branch
 - Pull Requests into devel will confirm your commits have a GPG signature, Signed-off, and a functional test before being approved
 - Once your changes are merged and a more detailed review is complete, an authorized member will merge your changes into the main branch for a new release
+
+### Raising a PR
+
+In order to raise a PR we utilise ansible-sign and pre-commit, the following steps will help you to meet this requirement.
+
+- Update file
+  - add file to git
+- Update Changelog
+  - add file to git
+- Ansible sign
+  - ```ansible-sign project gpg-sign .```
+- git commit (remembering signed_off_by and gpg enabled)
+  - pre-commit will run automatically and run content only tests
+- All clear and passed push to your branch
+
+example:
+
+```sh
+[INFO] Initializing environment for https://github.com/ansible-lockdown/ansible-sign.git.
+[INFO] Installing environment for https://github.com/ansible-lockdown/ansible-sign.git.
+[INFO] Once installed this environment will be reused.
+[INFO] This may take a few minutes...
+Detect AWS Credentials...................................................Passed
+Detect Private Key.......................................................Passed
+Check for merge conflicts................................................Passed
+Check for added large files..............................................Passed
+Check for case conflicts.................................................Passed
+Trim Trailing Whitespace.................................................Passed
+Fix End of Files.........................................................Passed
+Detect secrets...........................................................Passed
+Ansible-lint.............................................................Passed
+yamllint.................................................................Passed
+Verify Ansible-sign signature............................................Passed
+[precommit 832aca5] updated
+ 3 files changed, 18 insertions(+), 18 deletions(-)
+```
 
 ## Known Issues
 
