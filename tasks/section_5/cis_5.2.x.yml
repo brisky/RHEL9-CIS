@@ -78,7 +78,7 @@
       - name: "5.2.4 | PATCH | Ensure SSH access is limited | Add line to sshd_config for allowusers"
         ansible.builtin.lineinfile:
             path: "{{ rhel9_cis_sshd_config_file }}"
-            regexp: "^AllowUsers"
+            regexp: "^AllowUsers|^#AllowUsers"
             line: "AllowUsers {{ rhel9cis_sshd['allowusers'] }}"
             validate: sshd -t -f %s
         notify: Restart sshd
@@ -87,7 +87,7 @@
       - name: "5.2.4 | PATCH | Ensure SSH access is limited | Add line to sshd_config for allowgroups"
         ansible.builtin.lineinfile:
             path: "{{ rhel9_cis_sshd_config_file }}"
-            regexp: "^AllowGroups"
+            regexp: "^AllowGroups|^#AllowGroups"
             line: "AllowGroups {{ rhel9cis_sshd['allowgroups'] }}"
             validate: sshd -t -f %s
         notify: Restart sshd
@@ -96,7 +96,7 @@
       - name: "5.2.4 | PATCH | Ensure SSH access is limited | Add line to sshd_config for denyusers"
         ansible.builtin.lineinfile:
             path: "{{ rhel9_cis_sshd_config_file }}"
-            regexp: "^DenyUsers"
+            regexp: "^DenyUsers|^#DenyUsers"
             line: "DenyUsers {{ rhel9cis_sshd['denyusers'] }}"
             validate: sshd -t -f %s
         notify: Restart sshd
@@ -105,7 +105,7 @@
       - name: "5.2.4 | PATCH | Ensure SSH access is limited | Add line to sshd_config for denygroups"
         ansible.builtin.lineinfile:
             path: "{{ rhel9_cis_sshd_config_file }}"
-            regexp: "^DenyGroups"
+            regexp: "^DenyGroups|^#DenyGroups"
             line: "DenyGroups {{ rhel9cis_sshd['denygroups'] }}"
             validate: sshd -t -f %s
         notify: Restart sshd
@@ -354,14 +354,14 @@
       - name: "5.2.20 | PATCH | Ensure SSH Idle Timeout Interval is configured | Add line in sshd_config for ClientAliveInterval"
         ansible.builtin.lineinfile:
             path: "{{ rhel9_cis_sshd_config_file }}"
-            regexp: '^ClientAliveInterval'
+            regexp: '^ClientAliveInterval|^#ClientAliveInterval'
             line: "ClientAliveInterval {{ rhel9cis_sshd['clientaliveinterval'] }}"
             validate: sshd -t -f %s
 
       - name: "5.2.20 | PATCH | Ensure SSH Idle Timeout Interval is configured | Ensure SSH ClientAliveCountMax set to <= 3"
         ansible.builtin.lineinfile:
             path: "{{ rhel9_cis_sshd_config_file }}"
-            regexp: '^ClientAliveCountMax'
+            regexp: '^ClientAliveCountMax|^#ClientAliveCountMax'
             line: "ClientAliveCountMax {{ rhel9cis_sshd['clientalivecountmax'] }}"
             validate: sshd -t -f %s
   when:

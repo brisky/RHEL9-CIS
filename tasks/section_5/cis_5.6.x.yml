@@ -102,7 +102,7 @@
         ansible.builtin.lineinfile:
             path: /etc/pam.d/system-auth
             line: 'session     required            pam_umask.so'
-            insertafter: EOF
+            insertafter: EOF 
   when:
       - rhel9cis_rule_5_6_5
   tags:

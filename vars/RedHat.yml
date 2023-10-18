@@ -6,3 +6,13 @@ os_gpg_key_pubkey_content: "Red Hat, Inc. (release key 2) <security@redhat.com> 
 
 # disable repo_gpgcheck due to OS default repos
 rhel9cis_rule_enable_repogpg: false
+
+rhel9cis_sshd:
+    clientalivecountmax: 3
+    clientaliveinterval: 900
+    logingracetime: 60
+    # WARNING: make sure you understand the precedence when working with these values!!
+    # allowusers:
+    allowgroups: root sshd brisky
+    # denyusers:
+    # denygroups:
